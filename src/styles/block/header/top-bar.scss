@@ -1,0 +1,68 @@
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding-block: 24px;
+
+  @include on-table {
+    padding-block: 32px;
+  }
+
+  &__icons {
+    display: flex;
+    text-align: center;
+    gap: 24px;
+
+    @include on-table {
+      gap: 32px;
+    }
+  }
+
+  &__hover {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    @include hover-top-bar-number(opacity, 1);
+
+    &--phone-number {
+      display: none;
+
+      @include on-desktop {
+        display: block;
+
+        @include font-inter;
+
+        color: $main-text-page-color;
+        text-decoration: none;
+        text-transform: uppercase;
+        text-align: right;
+        letter-spacing: 2px;
+
+        opacity: 0;
+
+        @include hover-header-cursor(cursor, pointer);
+      }
+    }
+
+    &--icon {
+      @include hover-header-cursor(cursor, pointer);
+    }
+  }
+
+  &__logo-link {
+    display: flex;
+  }
+
+  &__logo {
+    height: 16px;
+
+    @include on-table {
+      height: 24px;
+    }
+
+    @include hover-header-cursor(cursor, pointer);
+    @include hover-zoom(transform, scale(1.2));
+  }
+}

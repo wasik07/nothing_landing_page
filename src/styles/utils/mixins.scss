@@ -1,0 +1,156 @@
+@mixin on-table {
+  @media (min-width: $tablet-min-wigth) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-wigth) {
+    @content;
+  }
+}
+
+@mixin constent-padding-inline {
+  padding-inline: 20px;
+
+  @include on-table {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    margin-inline: auto;
+    max-width: 1260px;
+    padding-inline: 120px;
+  }
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-table {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
+
+@mixin font-space-mono($fontSize, $color) {
+  font-family: "Space Mono", monospace;
+  font-size: #{$fontSize};
+  font-weight: 400;
+  line-height: 140%;
+  color: #{$color};
+}
+
+@mixin font-inter {
+  font-family: Inter, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 133.33%;
+}
+
+@mixin hover-button-options(
+  $property-1,
+  $property-2,
+  $property-3,
+  $toValue-1,
+  $toValue-2,
+  $toValue-3
+) {
+  transition-duration: $effect-duration;
+  transition-timing-function: ease-in;
+  transition-property:
+    #{$property-1},
+    #{$property-2},
+    #{$property-3};
+
+  &:hover {
+    #{$property-1}: #{$toValue-1};
+    #{$property-2}: #{$toValue-2};
+    #{$property-3}: #{$toValue-3};
+  }
+}
+
+@mixin hover-button {
+  @include hover-button-options(
+    background-color,
+    color,
+    border-color,
+    $hover-background-button-color,
+    $hover-text-button-color,
+    $hover-border-button-color
+  );
+}
+
+@mixin hover-top-bar-number($property, $toValue) {
+  &--phone-number {
+    transition: #{$property} $effect-duration ease-in;
+
+    @keyframes hover {
+      0% {
+        transform: translateY(-150%);
+      }
+
+      100% {
+        transform: translateY(0);
+      }
+    }
+  }
+
+  &:hover &--phone-number {
+    #{$property}: #{$toValue};
+
+    transform: translateY(-150%);
+    animation: hover $effect-duration forwards;
+  }
+}
+
+@mixin hover-header-cursor($property, $toValue) {
+  &:hover {
+    #{$property}:
+      url(../images/cursor/cursor-mouse-mice.svg) 4 12,
+      #{$toValue};
+    filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.25));
+  }
+}
+
+@mixin hover-zoom($property, $toValue) {
+  transition: #{$property} $effect-duration ease-in;
+
+  &:hover {
+    #{$property}: #{$toValue};
+  }
+}
+
+@mixin hover-underscore {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+
+    display: block;
+
+    height: 1px;
+    width: 100%;
+
+    background-color: $main-text-page-color;
+
+    transition: transform 0.3s;
+    transform: scale(0);
+    transform-origin: left;
+  }
+
+  &:hover::after {
+    transform: scale(1);
+  }
+}

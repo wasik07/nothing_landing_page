@@ -1,0 +1,43 @@
+.aboutus {
+  @include page-grid;
+
+  margin-bottom: 8px;
+
+  @include on-table {
+    margin-bottom: 0;
+  }
+
+  &__title {
+    grid-column: 1 / -1;
+
+    @include on-table {
+      grid-column: 1 / 4;
+    }
+
+    @include on-desktop {
+      grid-column: span 6;
+    }
+
+    &:nth-child(1) {
+      margin-bottom: 24px;
+    }
+  }
+
+  &__content {
+    display: grid;
+    row-gap: 16px;
+    grid-column: 1 / -1;
+
+    @include on-table {
+      grid-column: 4 / 7;
+    }
+
+    @include on-desktop {
+      grid-column: span 6;
+    }
+  }
+
+  &__description {
+    @include font-space-mono(16px, $main-text-page-color);
+  }
+}

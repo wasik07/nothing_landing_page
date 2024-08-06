@@ -1,0 +1,11 @@
+.contacts {
+  &__container {
+    @include page-grid;
+
+    row-gap: 48px;
+
+    @include on-table {
+      row-gap: 80px;
+    }
+  }
+}

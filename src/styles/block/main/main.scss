@@ -1,0 +1,38 @@
+.main {
+  &__content {
+    display: grid;
+    row-gap: 96px;
+
+    @include constent-padding-inline;
+
+    @include on-table {
+      row-gap: 120px;
+    }
+
+    &--top {
+      padding-top: 64px;
+      padding-bottom: 96px;
+
+      @include on-table {
+        padding-top: 120px;
+        padding-bottom: 120px;
+      }
+    }
+
+    &--bottom {
+      padding-top: 48px;
+      padding-bottom: 64px;
+
+      @include on-table {
+        padding-bottom: 120px;
+        padding-top: 56px;
+      }
+    }
+  }
+
+  &__background-photo {
+    display: block;
+    object-fit: cover;
+    width: 100%;
+  }
+}

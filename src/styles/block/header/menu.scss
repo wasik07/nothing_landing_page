@@ -1,0 +1,55 @@
+.menu {
+  overflow: auto;
+  height: 100vh;
+  background-color: $main-background-menu-color;
+
+  &__top {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: $main-background-menu-color;
+    margin-bottom: 32px;
+
+    @include on-table {
+      margin-bottom: 56px;
+    }
+  }
+
+  &__nav {
+    margin-bottom: 48px;
+  }
+
+  &__phone-number {
+    display: block;
+
+    margin-bottom: 16px;
+
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: 2px;
+
+    color: $main-text-page-color;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    @include hover-header-cursor(cursor, pointer);
+  }
+
+  &__call-to-order {
+    display: block;
+
+    width: fit-content;
+    padding-bottom: 4px;
+    border-bottom: 1px solid $main-text-page-color;
+
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: 2px;
+
+    color: $main-text-page-color;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    @include hover-header-cursor(cursor, pointer);
+  }
+}
